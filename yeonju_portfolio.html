@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YEONJU KIM · PORTFOLIO</title>
+<style>
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Pretendard';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+:root{--bg:#fafafb;--ink:#121417;--muted:#8b8f95;--line:#e5e6e8;--panel:#d9d9dc;--header:72px}
+*{box-sizing:border-box;letter-spacing:-0.08em!important}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,sans-serif;font-weight:400;overflow-x:hidden}button,a{font:inherit;color:inherit}button{border:0;background:none}a{text-decoration:none}
+.site-top{position:fixed;z-index:100;top:0;left:0;right:0;height:var(--header);display:flex;align-items:center;justify-content:space-between;padding:0 34px;opacity:0;pointer-events:none;transition:opacity .45s ease}.site-top:before{content:"";position:absolute;inset:0 0 -30px;z-index:-1;background:linear-gradient(to bottom,rgba(250,250,251,.98) 0%,rgba(250,250,251,.94) 62%,rgba(250,250,251,.55) 78%,rgba(250,250,251,0) 100%);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);mask-image:linear-gradient(to bottom,#000 0 70%,transparent 100%)}body.design-mode .site-top{opacity:1;pointer-events:auto}.top-brand{font-size:18px;font-weight:400;letter-spacing:-.03em}.top-nav{display:flex;gap:36px;font-size:16px;font-weight:400}.top-nav a{opacity:.78;transition:.2s}.top-nav a:hover{opacity:1;transform:translateY(-1px)}
+.initial{position:relative;min-height:170vh;transition:opacity .42s ease,transform .55s ease}body.design-mode .initial{opacity:0;transform:translateY(-30px);pointer-events:none;position:absolute;inset:0;height:100vh;overflow:hidden}.initial-mast{position:sticky;top:0;z-index:20;height:168px;pointer-events:none}.initial-mast:after{content:"";position:absolute;inset:0 0 -44px;background:linear-gradient(to bottom,var(--bg) 0 73%,rgba(250,250,251,.70) 84%,rgba(250,250,251,0) 100%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);mask-image:linear-gradient(to bottom,#000 0 76%,transparent 100%)}.name,.portfolio{font-weight:600;position:absolute;z-index:2;top:18px;margin:0;font-size:clamp(64px,7vw,116px);line-height:.9;letter-spacing:-.07em;white-space:nowrap}.name{left:22px}.portfolio{right:30px}.about-flow{position:relative;z-index:2;padding:28px 55px 180px}.about-grid{display:grid;grid-template-columns:260px 1fr 490px;column-gap:58px;align-items:start}.design-trigger{justify-self:start;margin-top:14px;padding:8px 4px;cursor:pointer;font-size:27px;font-weight:400;letter-spacing:-.05em;transition:.25s}.design-trigger:hover{transform:translateX(5px)}.design-trigger:after{content:"";display:block;width:0;height:1px;background:var(--ink);margin-top:5px;transition:width .28s ease}.design-trigger:hover:after{width:100%}.design-arrow{display:inline-block;margin-left:9px;font-size:14px;font-weight:400;vertical-align:middle;transform:translateY(-1px)}.info-block{font-weight:400;display:grid;grid-template-columns:170px 1fr;gap:78px;font-size:22px;line-height:1.18}.info-block+.info-block{margin-top:56px}.info-key{text-align:right}.info-value{white-space:pre-line}.info-tools{margin-top:76px}.info-tools+.cert-inline{margin-top:32px}.photo-slot{width:100%;aspect-ratio:1/1.42;background:#b8b8bb;overflow:hidden}.photo-slot:after{content:"YOUR PHOTO";height:100%;display:grid;place-items:center;color:#fff;font-size:12px;letter-spacing:.13em}.about-lower{display:grid;grid-template-columns:260px 1fr 490px;column-gap:58px;margin-top:120px}.cert-block{font-weight:400;grid-column:2;display:grid;grid-template-columns:170px 1fr;gap:78px;font-size:20px;line-height:1.25}.cert-label{text-align:right}.cert-value{max-width:360px}
+.design-stage{display:none;min-height:100vh}body.design-mode .design-stage{display:block}.fixed-design{position:fixed;z-index:25;left:58px;top:calc(var(--header) + 31vh);width:430px}.fixed-design .i-word{font-weight:600;display:block;font-size:clamp(82px,7vw,124px);line-height:.66;letter-spacing:-.07em}.fixed-design .design-word{font-weight:600;display:block;font-size:clamp(84px,8vw,136px);line-height:.76;letter-spacing:-.075em;margin-top:18px}.project-stream{margin-left:39vw;width:61vw;padding-top:calc(var(--header) + 31vh + clamp(72px,5.8vw,100px))}.project-section{min-height:112vh;padding:18px 7vw 95px 0;position:relative}.project-section:first-child{padding-top:0}.project-section#objects .project-category{margin-top:60px}.project-title{font-weight:600;margin:0;font-size:clamp(88px,8.7vw,148px);line-height:.88;letter-spacing:-.075em}.project-category{font-weight:500;margin:60px 0 28px;font-size:26px;letter-spacing:-.045em}.carousel{position:relative;width:100%;overflow:hidden}.slides{display:flex;transition:transform .55s cubic-bezier(.2,.72,.2,1);touch-action:pan-y}.slide{flex:0 0 100%;width:100%;aspect-ratio:16/8.6;background:#ec6cb3;overflow:hidden;position:relative}.slide:nth-child(2){background:#aebec8}.slide:nth-child(3){background:#d8c7a4}.slide img,.slide video{width:100%;height:100%;object-fit:cover}.placeholder{width:100%;height:100%;display:grid;place-items:center;color:rgba(18,20,23,.42);font-size:13px;letter-spacing:.10em}.carousel .prev,.carousel .next{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(250,250,251,.84);box-shadow:0 5px 16px rgba(0,0,0,.10);cursor:pointer;opacity:0;transition:opacity .2s}.carousel:hover .prev,.carousel:hover .next{opacity:1}.carousel .prev{left:14px}.carousel .next{right:14px}.carousel .prev:before{content:"←"}.carousel .next:before{content:"→"}.dots{position:absolute;z-index:4;left:50%;bottom:13px;transform:translateX(-50%);display:flex;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:rgba(250,250,251,.48);transition:.2s}.dot.active{background:#fff;transform:scale(1.18)}.project-meta{font-weight:400;display:flex;justify-content:space-between;gap:28px;margin-top:18px;font-size:20px;line-height:1.2}.project-meta strong{font-weight:400}.project-tools{font-weight:400;text-align:right;font-size:15px;padding-top:4px}.project-description{font-weight:400;max-width:760px;margin:28px 0 0;font-size:15px;line-height:1.7;color:#31353a}
+.design-stage .fixed-design,.design-stage .project-stream{opacity:0}body.design-mode .fixed-design{animation:fixedIn .6s cubic-bezier(.18,.72,.22,1) .08s forwards}body.design-mode .project-stream{animation:streamIn .62s cubic-bezier(.2,.72,.2,1) .18s forwards}@keyframes fixedIn{from{opacity:0;transform:translateY(34px) scale(.86);transform-origin:left center}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes streamIn{from{opacity:0;transform:translateY(52px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1100px){.about-grid,.about-lower{grid-template-columns:210px 1fr 360px;column-gap:34px}.info-block,.cert-block{grid-template-columns:140px 1fr;font-size:18px}.fixed-design{left:34px;width:320px}.project-stream{margin-left:38vw;width:62vw}}@media(max-width:800px){.name,.portfolio{font-size:55px}.initial-mast{height:135px}.about-flow{padding:22px 24px 140px}.about-grid{grid-template-columns:1fr;gap:46px}.design-trigger{font-size:24px}.info-block{grid-template-columns:110px 1fr}.photo-slot{width:min(420px,100%);justify-self:end}.about-lower{grid-template-columns:1fr;margin-top:90px}.cert-block{grid-column:1;grid-template-columns:110px 1fr}.site-top{padding:0 20px}.top-nav{gap:16px;font-size:13px}.fixed-design{position:sticky;top:var(--header);width:100%;left:auto;padding:24px 22px 18px;background:linear-gradient(to bottom,var(--bg) 80%,rgba(250,250,251,0))}.fixed-design .i-word,.fixed-design .design-word{display:inline;font-size:58px;line-height:1}.fixed-design .design-word{margin-left:10px}.project-stream{margin-left:0;width:100%;padding:0 22px 70px}.project-section{min-height:auto;padding:65px 0 95px}.project-title{font-size:70px}.project-category{margin-top:38px}}
+
+/* v5: project content scroll reveal */
+.project-category,
+.carousel,
+.project-meta,
+.project-description{
+  opacity:0;
+  transform:translateY(28px);
+  transition:
+    opacity .62s ease,
+    transform .62s cubic-bezier(.2,.72,.2,1);
+}
+.project-section.reveal-content .project-category{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.02s;
+}
+.project-section.reveal-content .carousel{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.11s;
+}
+.project-section.reveal-content .project-meta{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.20s;
+}
+.project-section.reveal-content .project-description{
+  opacity:1;
+  transform:translateY(0);
+  transition-delay:.28s;
+}
+
+/* v5: fullscreen control */
+.fullscreen-btn{
+  position:absolute;
+  z-index:6;
+  right:14px;
+  bottom:12px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(250,250,251,.88);
+  color:var(--ink);
+  box-shadow:0 5px 16px rgba(0,0,0,.10);
+  cursor:pointer;
+  font-size:18px;
+  opacity:.92;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.fullscreen-btn:hover{
+  opacity:1;
+  transform:scale(1.04);
+}
+.fullscreen-btn span{
+  display:block;
+  transform:translateY(-1px);
+}
+
+/* fullscreen viewer */
+.media-viewer{
+  position:fixed;
+  z-index:1000;
+  inset:0;
+  display:none;
+  background:rgba(18,20,23,.94);
+  color:#fff;
+}
+.media-viewer.open{display:block}
+.media-viewer-inner{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.viewer-slides{
+  width:100%;
+  height:100%;
+  display:flex;
+  transition:transform .55s cubic-bezier(.2,.72,.2,1);
+}
+.viewer-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  padding:5vh 6vw 8vh;
+}
+.viewer-slide > *{
+  max-width:100%;
+  max-height:100%;
+}
+.viewer-slide img,
+.viewer-slide video{
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+.viewer-placeholder{
+  width:min(86vw,1500px);
+  aspect-ratio:16/9;
+  display:grid;
+  place-items:center;
+  background:#ec6cb3;
+  color:rgba(18,20,23,.45);
+  font-size:13px;
+  letter-spacing:.10em;
+}
+.viewer-slide:nth-child(2) .viewer-placeholder{background:#aebec8}
+.viewer-slide:nth-child(3) .viewer-placeholder{background:#d8c7a4}
+.viewer-close{
+  position:absolute;
+  z-index:4;
+  right:26px;
+  top:24px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(250,250,251,.92);
+  color:#121417;
+  cursor:pointer;
+  font-size:22px;
+}
+.viewer-prev,
+.viewer-next{
+  position:absolute;
+  z-index:4;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:rgba(250,250,251,.90);
+  color:#121417;
+  cursor:pointer;
+  font-size:18px;
+}
+.viewer-prev{left:24px}
+.viewer-next{right:24px}
+.viewer-dots{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+}
+.viewer-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.40);
+  transition:background .2s ease,transform .2s ease;
+}
+.viewer-dot.active{
+  background:#fff;
+  transform:scale(1.18);
+}
+
+</style>
+</head>
+<body>
+<header class="site-top"><a class="top-brand" href="#" id="homeLink">YEONJU KIM · PORTFOLIO</a><nav class="top-nav"><a href="#objects">Objects</a><a href="#worlds">Worlds</a><a href="#motion">Motion</a><a href="#visuals">Visuals</a></nav></header>
+<section class="initial" id="initial"><div class="initial-mast"><h1 class="name">YEONJU KIM</h1><h1 class="portfolio">PORTFOLIO</h1></div><div class="about-flow"><div class="about-grid"><button class="design-trigger" id="designTrigger" type="button">I Design <span class="design-arrow">↗</span></button><div><div class="info-block"><div class="info-key">Email :<br>Phone :</div><div class="info-value">sd22344@naver.com
+010-0000-0000</div></div><div class="info-block"><div class="info-key">Instagram :<br>Behance :</div><div class="info-value">@0000000
+www.00000.000</div></div><div class="info-block info-tools"><div class="info-key">Tools :</div><div class="info-value">Maya
+ZBrush
+Unreal Engine
+Substance 3D
+Photoshop
+Illustrator
+After Effects
+Premier Pro</div></div><div class="info-block cert-inline"><div class="info-key">Certificate :</div><div class="info-value">한국폴리텍대학 대전캠퍼스<br>‘메타버스 콘텐츠과’ 수료</div></div></div><div class="photo-slot"></div></div></div></section>
+<main class="design-stage"><aside class="fixed-design"><span class="i-word">I</span><span class="design-word">Design</span></aside><div class="project-stream">
+<section class="project-section" id="objects"><h2 class="project-title">Objects</h2><h3 class="project-category">3D Modeling</h3><div class="carousel" data-carousel><div class="slides"><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 01</div></div><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 02</div></div><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 03</div></div></div><button class="prev" type="button" aria-label="이전 이미지"></button><button class="next" type="button" aria-label="다음 이미지"></button><div class="dots"></div></div><div class="project-meta"><strong>Venice Environment</strong><span class="project-tools">Maya · Unreal Engine · Substance 3D</span></div><p class="project-description">베니스의 수로와 건축 환경을 바탕으로 제작한 3D 환경 프로젝트입니다. 실제 작업 이미지를 삽입하면 이 영역에서 모델링 디테일과 최종 결과물을 슬라이드로 보여줄 수 있습니다.</p></section>
+<section class="project-section" id="worlds"><h2 class="project-title">Worlds</h2><h3 class="project-category">Level Design</h3><div class="carousel" data-carousel><div class="slides"><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 01</div></div><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 02</div></div><div class="slide"><div class="placeholder">PROJECT IMAGE / VIDEO 03</div></div></div><button class="prev" type="button"></button><button class="next" type="button"></button><div class="dots"></div></div><div class="project-meta"><strong>Zombie Village</strong><span class="project-tools">Unreal Engine</span></div><p class="project-description">공간의 동선과 라이팅, 환경 구성 요소를 활용해 분위기와 서사를 전달하는 레벨 디자인 프로젝트입니다.</p></section>
+<section class="project-section" id="motion"><h2 class="project-title">Motion</h2><h3 class="project-category">2D Motion Graphic</h3><div class="carousel" data-carousel><div class="slides"><div class="slide"><div class="placeholder">MOTION PROJECT 01</div></div><div class="slide"><div class="placeholder">MOTION PROJECT 02</div></div><div class="slide"><div class="placeholder">MOTION PROJECT 03</div></div></div><button class="prev" type="button"></button><button class="next" type="button"></button><div class="dots"></div></div><div class="project-meta"><strong>Motion Graphic Project</strong><span class="project-tools">After Effects · Premiere Pro · Photoshop</span></div><p class="project-description">타이포그래피, 그래픽 요소와 움직임을 조합해 메시지와 리듬을 전달하는 2D 모션그래픽 작업입니다.</p></section>
+<section class="project-section" id="visuals"><h2 class="project-title">Visuals</h2><h3 class="project-category">AI Video</h3><div class="carousel" data-carousel><div class="slides"><div class="slide"><div class="placeholder">AI VIDEO / IMAGE 01</div></div><div class="slide"><div class="placeholder">AI VIDEO / IMAGE 02</div></div><div class="slide"><div class="placeholder">AI VIDEO / IMAGE 03</div></div></div><button class="prev" type="button"></button><button class="next" type="button"></button><div class="dots"></div></div><div class="project-meta"><strong>AI Visual Project</strong><span class="project-tools">AI Image · AI Video · Premiere Pro</span></div><p class="project-description">AI 이미지 및 영상 생성 도구를 활용해 콘셉트부터 최종 영상까지 비주얼을 구현한 작업입니다.</p></section>
+</div></main>
+<div class="media-viewer" id="mediaViewer" aria-hidden="true">
+  <div class="media-viewer-inner">
+    <div class="viewer-slides" id="viewerSlides"></div>
+    <button class="viewer-close" id="viewerClose" type="button" aria-label="전체보기 닫기">×</button>
+    <button class="viewer-prev" id="viewerPrev" type="button" aria-label="이전 미디어">←</button>
+    <button class="viewer-next" id="viewerNext" type="button" aria-label="다음 미디어">→</button>
+    <div class="viewer-dots" id="viewerDots" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script>
+(()=>{const body=document.body,trigger=document.getElementById('designTrigger'),home=document.getElementById('homeLink');trigger.addEventListener('click',()=>{window.scrollTo(0,0);body.classList.add('design-mode')});home.addEventListener('click',e=>{e.preventDefault();body.classList.remove('design-mode');window.scrollTo({top:0,behavior:'smooth'})});document.querySelectorAll('.top-nav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(!t)return;const y=t.getBoundingClientRect().top+window.scrollY-82;window.scrollTo({top:y,behavior:'smooth'})}));document.querySelectorAll('[data-carousel]').forEach(c=>{const slides=c.querySelector('.slides'),items=[...c.querySelectorAll('.slide')],prev=c.querySelector('.prev'),next=c.querySelector('.next'),dotsWrap=c.querySelector('.dots');let i=0,start=null;const dots=items.map((_,n)=>{const d=document.createElement('span');d.className='dot'+(n===0?' active':'');dotsWrap.appendChild(d);return d});const update=()=>{slides.style.transform=`translateX(${-i*100}%)`;dots.forEach((d,n)=>d.classList.toggle('active',n===i))};const go=n=>{i=(n+items.length)%items.length;update()};prev.addEventListener('click',()=>go(i-1));next.addEventListener('click',()=>go(i+1));c.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;start=e.clientX;c.setPointerCapture?.(e.pointerId)});c.addEventListener('pointerup',e=>{if(start===null)return;const dx=e.clientX-start;if(dx<-55)go(i+1);if(dx>55)go(i-1);start=null});c.addEventListener('pointercancel',()=>start=null)})})();
+</script>
+
+<script>
+(() => {
+  const sections = [...document.querySelectorAll('.project-section')];
+  const designTrigger = document.getElementById('designTrigger');
+
+  /* 첫 Objects 화면은 기존처럼 제목만 보이고,
+     I Design 진입 후 첫 휠/스크롤 시 바로 아래 콘텐츠가 나타남. */
+  let objectsUnlocked = false;
+
+  function unlockObjects(){
+    if(objectsUnlocked || !document.body.classList.contains('design-mode')) return;
+    objectsUnlocked = true;
+    document.getElementById('objects')?.classList.add('reveal-content');
+  }
+
+  window.addEventListener('wheel', unlockObjects, {passive:true});
+  window.addEventListener('touchmove', unlockObjects, {passive:true});
+  window.addEventListener('keydown', e => {
+    if(['ArrowDown','PageDown',' '].includes(e.key)) unlockObjects();
+  });
+
+  designTrigger?.addEventListener('click', () => {
+    objectsUnlocked = false;
+    sections.forEach(s => s.classList.remove('reveal-content'));
+  });
+
+  /* Worlds / Motion / Visuals는 스크롤로 화면에 들어오면 순차적으로 fade-in */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const section = entry.target;
+      if(section.id === 'objects' && !objectsUnlocked) return;
+      section.classList.add('reveal-content');
+    });
+  }, {threshold:.20, rootMargin:'0px 0px -8% 0px'});
+
+  sections.forEach(section => observer.observe(section));
+
+  /* 각 carousel 우측 하단에 전체보기 버튼 추가 */
+  const viewer = document.getElementById('mediaViewer');
+  const viewerSlides = document.getElementById('viewerSlides');
+  const viewerDots = document.getElementById('viewerDots');
+  const viewerClose = document.getElementById('viewerClose');
+  const viewerPrev = document.getElementById('viewerPrev');
+  const viewerNext = document.getElementById('viewerNext');
+
+  let viewerIndex = 0;
+  let viewerCount = 0;
+
+  function updateViewer(){
+    viewerSlides.style.transform = `translateX(${-viewerIndex * 100}%)`;
+    [...viewerDots.children].forEach((dot,i) => {
+      dot.classList.toggle('active', i === viewerIndex);
+    });
+  }
+
+  function closeViewer(){
+    viewer.classList.remove('open');
+    viewer.setAttribute('aria-hidden','true');
+  }
+
+  function openViewer(carousel){
+    const originalSlides = [...carousel.querySelectorAll('.slide')];
+    const track = carousel.querySelector('.slides');
+    const matrix = getComputedStyle(track).transform;
+
+    let current = 0;
+    if(matrix && matrix !== 'none'){
+      const match = matrix.match(/matrix\(([^)]+)\)/);
+      if(match){
+        const vals = match[1].split(',').map(Number);
+        const tx = vals[4] || 0;
+        const width = carousel.getBoundingClientRect().width || 1;
+        current = Math.round(Math.abs(tx) / width);
+      }
+    }
+
+    viewerSlides.innerHTML = '';
+    viewerDots.innerHTML = '';
+    viewerCount = originalSlides.length;
+    viewerIndex = Math.max(0, Math.min(current, viewerCount - 1));
+
+    originalSlides.forEach((slide, i) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'viewer-slide';
+
+      const media = slide.querySelector('img,video');
+      if(media){
+        const clone = media.cloneNode(true);
+        if(clone.tagName === 'VIDEO') clone.controls = true;
+        wrap.appendChild(clone);
+      } else {
+        const ph = document.createElement('div');
+        ph.className = 'viewer-placeholder';
+        ph.textContent = slide.textContent.trim() || `PROJECT MEDIA ${String(i+1).padStart(2,'0')}`;
+        wrap.appendChild(ph);
+      }
+
+      viewerSlides.appendChild(wrap);
+
+      const dot = document.createElement('span');
+      dot.className = 'viewer-dot' + (i === viewerIndex ? ' active' : '');
+      viewerDots.appendChild(dot);
+    });
+
+    updateViewer();
+    viewer.classList.add('open');
+    viewer.setAttribute('aria-hidden','false');
+  }
+
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fullscreen-btn';
+    btn.setAttribute('aria-label','전체보기');
+    btn.innerHTML = '<span>↗</span>';
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openViewer(carousel);
+    });
+    carousel.appendChild(btn);
+  });
+
+  viewerPrev.addEventListener('click', () => {
+    if(!viewerCount) return;
+    viewerIndex = (viewerIndex - 1 + viewerCount) % viewerCount;
+    updateViewer();
+  });
+
+  viewerNext.addEventListener('click', () => {
+    if(!viewerCount) return;
+    viewerIndex = (viewerIndex + 1) % viewerCount;
+    updateViewer();
+  });
+
+  viewerClose.addEventListener('click', closeViewer);
+  viewer.addEventListener('click', e => {
+    if(e.target === viewer || e.target.classList.contains('media-viewer-inner')) closeViewer();
+  });
+
+  window.addEventListener('keydown', e => {
+    if(!viewer.classList.contains('open')) return;
+    if(e.key === 'Escape') closeViewer();
+    if(e.key === 'ArrowLeft') viewerPrev.click();
+    if(e.key === 'ArrowRight') viewerNext.click();
+  });
+})();
+</script>
+
+</body>
+</html>
